@@ -1,0 +1,108 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="all" />
+    </head>
+    <body style="margin-top: 20px;margin-left: 20px;margin-right: 20px;">
+
+        <form class="well" id="form">
+            <label>Mot clé</label>
+            <input type="text" class="span3" name="keyword" id="keyword" style="margin-bottom: 0px;height: 30px;">
+            <button type="button" class="btn btn-primary" id="scrap">Scrap</button>
+            <img src="loader.gif" id="loader" style="display: none"/>
+        </form>
+
+        <div id="results" style="display: none;text-align: center;
+             font-weight: bold;font-size: 20px;">
+            <div id="nbKeywords" style="font-weight: bold;font-size: 20px;"></div>
+            <br/>
+            <button type="button" class="btn btn-success" id="getKeywords">Récupérer les mots clés</button>
+        </div>
+
+        <div class="modal hide" id="keywords">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h3>Mots clés</h3>
+            </div>
+            <div class="modal-body">
+                <textarea style="width: 510px;height: 390px;" id="keywords-text"></textarea>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn" data-dismiss="modal">Fermer</a>
+            </div>
+        </div>
+
+        <br/>
+
+        <div class="progress progress-striped active" style="display: none">
+            <div class="bar"></div>
+        </div>
+
+        <br/>
+
+        <div>
+
+            <table cellpadding="0" cellspacing="0" border="0" class="table table-bordered" id="resultsTable"
+                   style="font-size: 11px;">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th class="type-string" style="cursor: pointer">
+                            Mot clé
+                        </th>
+                        <th class="type-int" style="cursor: pointer">
+                            Nombre de recherche
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+
+        </div>
+
+        <script>
+
+            $(document).ready(function(){
+                $("#resultsTable").stupidtable();
+
+                $("#scrap").click(function(e){
+                    e.preventDefault();
+                    scrap();
+                });
+
+                $('#form').submit(function(e) {
+                    e.preventDefault();
+                    scrap();
+                });
+
+                $("#getKeywords").click(function(e){
+                    e.preventDefault();
+                    $('#keywords').modal();
+                })
+            });
+
+            function scrap(){
+                resetScrap();
+                $(".progress").show();
+                $("#scrap").hide();
+                $("#loader").show();
+                GoogleSuggest.start($("#keyword").val(),function(nbKeywords){
+
+                    $("#nbKeywords").html(nbKeywords+" mots clés")
+                    $("#results").show();
+                    $("#scrap").show();
+                    $("#loader").hide();
+                });
+            }
+
+            function resetScrap(){
+                $(".line").remove();
+                $("#results").hide();
+                $(".progress").hide();
+                $("#keywords-text").html("");
+                $(".bar").css("width","0%");
+                GoogleSuggest.init();
+            }
+        </script>
+    </body>
+</html>

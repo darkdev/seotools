@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body>
+
+        <script>
+            chrome.tabs.create({'url': chrome.extension.getURL('index.html')}, function(tab) {
+                window.close();
+            });
+        </script>
+    </body>
+</html>
