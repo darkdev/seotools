@@ -1,0 +1,86 @@
+.navbar-inner {
+    border-radius: 0px;
+}
+
+.sidebar {
+    float: left;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 41px;
+    background-color: #1C2326;
+    border-right: 1px solid #E5E5E5;
+}
+
+.sidebar .nav li {
+    margin: 0;
+    padding: 0;
+    width: 65px;
+    border-bottom: 1px solid #383838;
+}
+
+.sidebar .nav-stacked > li > a {
+    padding: 0;
+    position: relative;
+    border: none;
+    text-align: center;
+    font-size: 13px;
+    height: 45px;
+    width: 65px;
+    display: block;
+    color: #c5c5c5;
+    padding-top: 25px;
+    font-weight: bold;
+    border-radius: 0 !important;
+    -webkit-border-radius: none !important;
+    -moz-border-radius: none !important;
+}
+
+.sidebar .nav-stacked > li > a:hover {
+    color: white;
+    background: #217cb8; /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover,  #217cb8 0%, #17557f 100%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#217cb8), color-stop(100%,#17557f)); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover,  #217cb8 0%,#17557f 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover,  #217cb8 0%,#17557f 100%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover,  #217cb8 0%,#17557f 100%); /* IE10+ */
+    background: radial-gradient(ellipse at center,  #217cb8 0%,#17557f 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#217cb8', endColorstr='#17557f',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.nav-image{
+    width: 20px;
+    height: 20px;
+}
+
+.container-fluid{
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-top: 10px;
+    margin-left: 80px;
+}
+
+.center{
+    text-align: center;
+}
+
+.separator{
+    margin-bottom: 60px;
+}
+
+.allKeywords{
+    width: 90%;
+    height: 370px;
+}
+
+.brand{
+    margin-left: 0px !important;
+}
+
+.keyword-table{
+    width: auto;
+}
+
+.keyword-table td{
+    vertical-align: middle;
+}

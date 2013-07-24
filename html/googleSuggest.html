@@ -1,0 +1,75 @@
+<div class="row-fluid">
+    <div class="span12">
+        <input type="button" class="btn btn-info" value="Dernières recherches" ng-click="showLastSearch()">
+        <br>
+        <br>
+        <table class="table table-bordered keyword-table" ng-show="lastSuggest">
+            <tr ng-repeat="suggest in lastSuggests">
+                <td>
+                    <a href ng-click="showSearchInCache(suggest)">{{suggest}}</a>
+                </td>
+                <td>
+                    <a class="btn btn-danger btn-mini"
+                       href ng-click="deleteCachedKeyword($index)">
+                        <i class="icon-minus"></i>
+                    </a>
+                </td>
+            </tr>
+        </table>
+
+        <div class="center">
+            <form class="form-inline well" ng-submit="scrap()">
+                Mot clé :
+                <input class="input-xlarge" name="keyword" id="keyword" type="text" ng-model="keyword">
+                <input type="button" value="Scrap" class="btn btn-info" ng-click="scrap()">
+            </form>
+        </div>
+
+        <div ng-show="showProgress">
+            <div class="center">
+                <h3>{{nbResults}} résultats</h3>
+            </div>
+            <progress percent="progress" class="progress-info" animate="false"></progress>
+
+            <div class="center" ng-show="endSuggest">
+                <input type="button" class="btn btn-success btn-large" value="Récupérer les mots clés"
+                       ng-click="open()">
+                <br>
+                <br>
+            </div>
+        </div>
+
+        <div modal="shouldBeOpen" close="close()" options="opts">
+            <div class="modal-header">
+                <h3>Mots clés</h3>
+            </div>
+            <div class="modal-body">
+                <ul>
+                    <textarea class="allKeywords">{{allKeywords}}</textarea>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-info cancel" ng-click="close()">Fermer</button>
+            </div>
+        </div>
+
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>
+                    Mot clé
+                </th>
+                <th>
+                    Nombre de recherche
+                </th>
+            </tr>
+            <tr ng-repeat="suggest in suggests">
+               <td>
+                    {{suggest.keyword}}
+               </td>
+                <td>
+                    {{suggest.nbSearch}}
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
